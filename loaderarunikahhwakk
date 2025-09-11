@@ -1,8 +1,8 @@
 -- Sistem Lock Username
 local allowedUsernames = {
     ["6atotkaca9"] = true,
-    ["9wenerd"] = true
-    ["seemyftur"] = true
+    ["9wenerd"] = true, 
+    ["seemyftur"] = true, 
 }
 
 local player = game:GetService("Players").LocalPlayer
