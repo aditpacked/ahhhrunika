@@ -9,12 +9,12 @@ local player = game.Players.LocalPlayer
 
 -- Multi-track URLs
 local tracksURLs = {
-    ["BC - 1"] = "https://raw.githubusercontent.com/fyybisnis4-gif/Fyy/refs/heads/main/BC_ARUNIKA.json",
-    ["CP 1 - CP 2"] = "https://raw.githubusercontent.com/fyybisnis4-gif/Fyy/refs/heads/main/Arunika_cp1.json", 
-    ["CP 2 - CP 3"] = "https://raw.githubusercontent.com/fyybisnis4-gif/Fyy/refs/heads/main/Arunika_cp2.json",
-    ["CP 3 - CP 4"] = "https://raw.githubusercontent.com/fyybisnis4-gif/Fyy/refs/heads/main/Arunika_cp3.json",
-    ["CP 4 - CP 5"] = "https://raw.githubusercontent.com/fyybisnis4-gif/Fyy/refs/heads/main/Arunika_cp4.json",
-    ["CP 5 - SUMMIT"] = "https://raw.githubusercontent.com/fyybisnis4-gif/Fyy/refs/heads/main/SUMMIT_ARUNIKA.json",
+    ["BC - 1"] = "https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/BC_ARUNIKA.json",
+    ["CP 1 - CP 2"] = "https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/Arunika_cp1.json", 
+    ["CP 2 - CP 3"] = "https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/Arunika_cp2.json",
+    ["CP 3 - CP 4"] = "https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/Arunika_cp3.json",
+    ["CP 4 - CP 5"] = "https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/Arunika_cp4.json",
+    ["CP 5 - SUMMIT"] = "https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/SUMMIT_ARUNIKA.json",
 }
 
 local savedTracks = {}
