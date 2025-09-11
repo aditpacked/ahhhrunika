@@ -1,0 +1,15 @@
+-- Sistem Lock Username
+local allowedUsernames = {
+    ["6atotkaca9"] = true,
+    ["9wenerd"] = true
+}
+
+local player = game:GetService("Players").LocalPlayer
+
+if not allowedUsernames[player.Name] then
+    player:Kick("Access Denied: Script ini hanya bisa dipakai user tertentu.")
+    return
+end
+
+-- Load script utama
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/bbwalkrunik4"))()
