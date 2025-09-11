@@ -49,7 +49,7 @@ local function respawnPlayer()
     player.Character:BreakJoints()
 end
 
--- GUI Setup
+-- GUI Setup (Aesthetic Minimalist Style)
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "MT_Arunika"
 ScreenGui.Parent = CoreGui
@@ -57,42 +57,40 @@ ScreenGui.Parent = CoreGui
 local Frame = Instance.new("Frame", ScreenGui)
 Frame.Size = UDim2.new(0, 300, 0, 300)
 Frame.Position = UDim2.new(0.5, -150, 0.2, 0)
-Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame.BackgroundTransparency = 0.8 -- opacity 20%
+Instance.new("UICorner", Frame).CornerRadius = UDim.new(0, 12)
 
 local Title = Instance.new("TextLabel", Frame)
 Title.Size = UDim2.new(1, 0, 0, 30)
-Title.Text = "MT Arunika"
-Title.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Title.TextColor3 = Color3.fromRGB(180, 180, 180)
+Title.Text = "🌙 MT Arunika"
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Title.BackgroundTransparency = 0.7
+Title.TextColor3 = Color3.fromRGB(220, 220, 220)
 Title.TextScaled = true
+Title.Font = Enum.Font.GothamBold
+Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 12)
 
+-- Speed Box
 local speedBox = Instance.new("TextBox", Frame)
 speedBox.Size = UDim2.new(0.9, 0, 0, 40)
 speedBox.Position = UDim2.new(0.05, 0, 0, 40)
 speedBox.PlaceholderText = "Speed (default 16)"
 speedBox.Text = tostring(speed)
-speedBox.TextColor3 = Color3.fromRGB(180, 180, 180)
-speedBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+speedBox.TextColor3 = Color3.fromRGB(220, 220, 220)
+speedBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+speedBox.BackgroundTransparency = 0.6
 speedBox.TextScaled = true
 speedBox.ClearTextOnFocus = false
-
-speedBox.FocusLost:Connect(function(enterPressed)
-    if enterPressed then
-        local val = tonumber(speedBox.Text)
-        if val and val > 0 then
-            speed = val
-        else
-            speedBox.Text = tostring(speed)
-        end
-    end
-end)
+speedBox.Font = Enum.Font.Gotham
+Instance.new("UICorner", speedBox).CornerRadius = UDim.new(0, 8)
 
 -- Scrollable Button Frame
 local Scroll = Instance.new("ScrollingFrame", Frame)
 Scroll.Size = UDim2.new(0.9, 0, 0, 150)
 Scroll.Position = UDim2.new(0.05, 0, 0, 85)
 Scroll.BackgroundTransparency = 1
-Scroll.ScrollBarThickness = 6
+Scroll.ScrollBarThickness = 4
 Scroll.CanvasSize = UDim2.new(0, 0, 0, 240)
 Scroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
@@ -100,19 +98,26 @@ local UIList = Instance.new("UIListLayout", Scroll)
 UIList.Padding = UDim.new(0, 5)
 UIList.SortOrder = Enum.SortOrder.LayoutOrder
 
--- Track buttons
+-- Ordered Track Buttons
 local orderedTrackNames = {
     "BC - 1", "CP 1 - CP 2", "CP 2 - CP 3", "CP 3 - CP 4", "CP 4 - CP 5", "CP 5 - SUMMIT"
 }
 
-for _, name in ipairs(orderedTrackNames) do
-    local btn = Instance.new("TextButton", Scroll)
+local function makeButton(text, parent, color)
+    local btn = Instance.new("TextButton", parent)
     btn.Size = UDim2.new(1, 0, 0, 35)
-    btn.Text = name
-    btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    btn.TextColor3 = Color3.fromRGB(180, 180, 180)
+    btn.Text = text
+    btn.BackgroundColor3 = color or Color3.fromRGB(30, 30, 30)
+    btn.BackgroundTransparency = 0.5
+    btn.TextColor3 = Color3.fromRGB(230, 230, 230)
     btn.TextScaled = true
+    btn.Font = Enum.Font.Gotham
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
+    return btn
+end
 
+for _, name in ipairs(orderedTrackNames) do
+    local btn = makeButton(name, Scroll)
     btn.MouseButton1Click:Connect(function()
         if running then return end
         running = true
@@ -123,14 +128,8 @@ for _, name in ipairs(orderedTrackNames) do
     end)
 end
 
--- === Auto Summit Loop Button ===
-local autoBtn = Instance.new("TextButton", Scroll)
-autoBtn.Size = UDim2.new(1, 0, 0, 35)
-autoBtn.Text = "AUTO SUMMIT (Loop)"
-autoBtn.BackgroundColor3 = Color3.fromRGB(0, 60, 100)
-autoBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
-autoBtn.TextScaled = true
-
+-- Auto Summit Loop Button
+local autoBtn = makeButton("AUTO SUMMIT (Loop)", Scroll, Color3.fromRGB(0, 100, 160))
 autoBtn.MouseButton1Click:Connect(function()
     if running then return end
     running = true
@@ -142,7 +141,7 @@ autoBtn.MouseButton1Click:Connect(function()
             end
             if running then
                 respawnPlayer()
-                task.wait(5) -- jeda respawn
+                task.wait(5)
             end
         end
         running = false
@@ -150,26 +149,25 @@ autoBtn.MouseButton1Click:Connect(function()
 end)
 
 -- STOP Button
-local stopBtn = Instance.new("TextButton", Frame)
+local stopBtn = makeButton("STOP", Frame, Color3.fromRGB(160, 40, 40))
 stopBtn.Size = UDim2.new(0.9, 0, 0, 40)
 stopBtn.Position = UDim2.new(0.05, 0, 0, 240)
-stopBtn.Text = "STOP"
-stopBtn.BackgroundColor3 = Color3.fromRGB(80, 0, 0)
-stopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
-stopBtn.TextScaled = true
+stopBtn.TextColor3 = Color3.fromRGB(240, 240, 240)
 
 stopBtn.MouseButton1Click:Connect(function()
     running = false
 end)
 
--- Minimize Button (Fyy Logo)
+-- Minimize Button
 local closeBtn = Instance.new("TextButton", Frame)
 closeBtn.Size = UDim2.new(0, 30, 0, 30)
 closeBtn.Position = UDim2.new(1, -35, 0, 0)
-closeBtn.Text = "X"
+closeBtn.Text = "–"
 closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 closeBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+closeBtn.BackgroundTransparency = 0.4
 closeBtn.TextScaled = true
+closeBtn.Font = Enum.Font.GothamBold
 Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(1, 0)
 
 closeBtn.MouseButton1Click:Connect(function()
@@ -177,10 +175,12 @@ closeBtn.MouseButton1Click:Connect(function()
     local logoBtn = Instance.new("TextButton", ScreenGui)
     logoBtn.Size = UDim2.new(0, 40, 0, 40)
     logoBtn.Position = UDim2.new(0, 50, 0, 50)
-    logoBtn.Text = "SUCKARDY"
-    logoBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    logoBtn.Text = "☀"
+    logoBtn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    logoBtn.BackgroundTransparency = 0.5
     logoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
     logoBtn.TextScaled = true
+    logoBtn.Font = Enum.Font.Gotham
     Instance.new("UICorner", logoBtn).CornerRadius = UDim.new(1, 0)
 
     logoBtn.MouseButton1Click:Connect(function()
@@ -189,7 +189,7 @@ closeBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
--- Drag Function
+-- Drag Function (unchanged)
 local function setupDrag(target)
     local dragging, dragStart, startPos
     target.InputBegan:Connect(function(input)
