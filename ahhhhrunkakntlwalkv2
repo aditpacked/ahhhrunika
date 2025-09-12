@@ -10225,7 +10225,7 @@ end
 
 
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "WataXReplay"
+screenGui.Name = "SuckardyReplay"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = game.CoreGui
 
@@ -10240,7 +10240,7 @@ Instance.new("UICorner", frame).CornerRadius = UDim.new(0,12)
 
 local title = Instance.new("TextLabel",frame)
 title.Size = UDim2.new(1,0,0,32)
-title.Text = "WataX Menu"
+title.Text = "Suckardy Menu"
 title.BackgroundColor3 = Color3.fromRGB(55,55,65)
 title.TextColor3 = Color3.fromRGB(255,255,255)
 title.Font = Enum.Font.GothamBold
@@ -10308,7 +10308,7 @@ Instance.new("UICorner", miniBtn).CornerRadius = UDim.new(0,8)
 local bubbleBtn = Instance.new("TextButton", screenGui)
 bubbleBtn.Size = UDim2.new(0,80,0,46)
 bubbleBtn.Position = UDim2.new(0,20,0.7,0)
-bubbleBtn.Text = "WataX"
+bubbleBtn.Text = "SUCKARDY"
 bubbleBtn.BackgroundColor3 = Color3.fromRGB(0,140,220)
 bubbleBtn.TextColor3 = Color3.fromRGB(255,255,255)
 bubbleBtn.Font = Enum.Font.GothamBold
@@ -10390,7 +10390,7 @@ end)
 
 discordBtn.MouseButton1Click:Connect(function()
     if setclipboard then
-        setclipboard("https://discord.gg/tfNqRQsqHK")
+        setclipboard("XNXX.COM")
     end
 end)
 
